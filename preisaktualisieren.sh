@@ -9,7 +9,7 @@ while read LINE
 		grundpreis_neu=$(grep -A10 "id=\"tab-$myvar" "$myvar" | grep -oE 'Grundpreis: [0-9,]* ' | grep -oE '[0-9,]*')
 		echo "$LINE $grundpreis_neu" >> tmp.csv
 		if [ "$grundpreis_alt" != "$grundpreis_neu" ]; then
-			echo neuer Grundpreis bei "$myvar"!
+			echo neuer Grundpreis bei "$myvar"!: "$grundpreis_neu" vs. "$grundpreis_alt"
 		fi
 	fi
 done < Artikelnummern-bode.csv
